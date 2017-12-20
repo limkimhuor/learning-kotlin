@@ -17,6 +17,13 @@ version '1.0-SNAPSHOT'
 apply plugin: 'kotlin'
 apply plugin: 'application'
 mainClassName = "org.learning.Application"
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
 jar {
     manifest {
         attributes 'Main-Class': 'org.learning.Application'
@@ -26,11 +33,13 @@ jar {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.19.2"
 }
 
 compileKotlin {
